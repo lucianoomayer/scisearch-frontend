@@ -1,0 +1,69 @@
+.header {   
+    display: flex;    
+    align-items: center;
+    justify-content: flex-end;
+    position: fixed;
+    height: 70px;
+    width: 100%;
+    padding: 0 2rem;
+    background-color: #000000;
+    color: #ffffff;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+.header-middle {
+    display: flex;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);  
+    align-items: center;
+    gap: 20px;
+    font-size: 1.4em;
+}
+
+.auth-group {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.auth-group p {
+  margin: 0;
+  font-size: 1.2em;
+  color: #fff;
+}
+
+.button1, .button2 {
+  display: flex;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  position: relative;
+}
+
+.button1::after, 
+.button2::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #0217ff;
+  transition: 0.3s;
+}
+
+.button1:hover::after,
+.button2:hover::after {
+  width: 100%;
+}  
+
+.header-button:hover {
+  background-color: #2a3b5a;
+}

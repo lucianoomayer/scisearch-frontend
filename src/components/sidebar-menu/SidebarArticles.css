@@ -1,0 +1,143 @@
+.sidebar-container {
+  position: fixed;
+  right: 0;
+  top: 70px; 
+  width: 550px;
+  height: calc(100% - 70px);
+  background-color: #1c1c1c;
+  color: #fff;
+  box-shadow: -2px 0 6px rgba(0, 0, 0, 0.3);
+  padding: 1rem;
+  overflow-y: auto;
+  z-index: 20;
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.sidebar-header h2{
+  flex: auto;
+  align-items: center;
+  font-size: 1.4em;
+  color: #ffffff;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.input {
+  width: 70%;
+  padding: 0.6rem;
+  margin-bottom: 1rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #2a2a2a;
+  color: #fff;
+  font-size: 0.9rem;
+}
+
+.input::placeholder {
+  color: #aaa;
+}
+
+.sidebar-header .close-button {
+  position: absolute;
+  margin-left: 30rem;
+  margin-bottom: 3rem;
+  background: none;
+  border: none;
+  color: #ff0000;
+  font-size: 3.5rem;
+  cursor: pointer;
+}
+
+.sidebar-header .close-button:hover{
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.sidebar-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #2a2a2a;
+  min-height: 180px;
+  width: 420px;
+  padding-top: 1.5rem;
+  padding-bottom: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  gap: 5px;
+}
+
+.sidebar-card:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-card .header {
+  position: relative;
+  justify-content: space-between;
+  align-items: center;
+  height: 70%;
+  width: 100%;
+  padding-bottom: 1rem;
+  padding-right: 40px;
+  background-color: transparent;
+}
+
+.sidebar-card h3 a {
+  text-decoration: none;   
+  color: inherit;         
+}
+
+.sidebar-card h3{
+  text-align: center;
+  width: 100%;
+  color: #3f51b5;
+  font-size: 1.1rem;
+  overflow-wrap: break-word;
+}
+
+.sidebar-card h3:hover{
+  text-decoration: underline;
+}
+
+.sidebar-card p {
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+.delete-button {
+  position: absolute;
+  top: -15px;     
+  right: 5px;
+  background-color: #dc3545;
+  color: #fff;
+  width: 2.4rem;
+  border-radius: 15%;
+  font-size: 1.4rem;
+  cursor: pointer; 
+}
+
+.delete-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.empty-message {
+  color: #ccc;
+  font-size: 0.9rem;
+  text-align: center;
+}

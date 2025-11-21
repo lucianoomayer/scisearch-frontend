@@ -1,0 +1,30 @@
+import React, { useState, useEffect, useRef } from 'react';
+import  SearchField  from '../search-field/SearchField';
+import "./Header.css";
+
+export default function Header({ isAuthenticated, handleSearch, onLoginClick, onRegisterClick, userName, onLogout , onFavoritesClick}) {
+   return (
+    <header className="header">
+      <div className="header-middle">
+        <h1>SciSearch</h1>
+        <SearchField onSearch={handleSearch} className="search-bar" />
+      </div>
+      <div className="header-right">
+        {isAuthenticated ? (
+          <div className="auth-group">
+            <p>Welcome, {userName.split(" ")[0]}! Find scientific articles easily.</p>
+            <button onClick={onFavoritesClick} className="button1">My Favorites</button>
+            <button onClick={onLogout} className="button2">Log out</button>
+          </div>
+          
+        ) : (
+          <div className="auth-group">
+            <p>Log in or Register to access your favorite articles!</p>
+            <button onClick={onLoginClick} className="button1">Log in</button>
+            <button onClick={onRegisterClick} className="button2">Register</button>
+          </div>
+        )}
+      </div>
+    </header>
+  );
+}
