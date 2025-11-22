@@ -8,12 +8,14 @@
 **Live version (Vercel):**  
 >https://scisearch-lucianoomayer.vercel.app
 
+**Note:** Because the backend runs on a platform with cold start, the first request — or any request after a period of inactivity — may take a few seconds to respond.
+
 ## Architecture Overview
 
 ### **Tech Stack**
 - React (JavaScript)
 - Fetch API for HTTP requests
-- Vercel for deployment
+- Deployed on Vercel
 
 ### **Communication**
 - Integration with the SciSearch Backend (Spring Boot)
