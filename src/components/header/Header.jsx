@@ -4,10 +4,11 @@ import "./Header.css";
 
 export default function Header({ isAuthenticated, handleSearch, onLoginClick, onRegisterClick, userName, onLogout , onFavoritesClick}) {
    return (
-    <header className="header">
+    <header className="header-container">
+      <div className="header-left"></div>
       <div className="header-middle">
         <h1>SciSearch</h1>
-        <SearchField onSearch={handleSearch} className="search-bar" />
+        <SearchField onSearch={handleSearch}/>
       </div>
       <div className="header-right">
         {isAuthenticated ? (

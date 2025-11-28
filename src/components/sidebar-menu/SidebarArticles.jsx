@@ -44,7 +44,7 @@ export default function SideBarArticles({ onClose, onDelete, onRefresh }) {
     <aside className="sidebar-container">
       <div className="sidebar-header">
         <h2>My Articles</h2>
-        <button className="close-button" onClick={onClose}>x</button>
+        <button title="Close" className="close-button" onClick={onClose}>x</button>
       </div>
 
       <input
@@ -66,15 +66,7 @@ export default function SideBarArticles({ onClose, onDelete, onRefresh }) {
           filteredArticles.map((article) => (
             <div className="sidebar-card" key={article.articleId}>
               <div className="header">
-                <h3>
-                  <a
-                    href={article.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {article.title}
-                  </a>
-                </h3>
+                <h3><a href={article.url}>{article.title}</a></h3>
                 <button title="Remove" className="delete-button" onClick={() => onDelete(article, setArticles)}>x</button>
               </div>
               <p>Publication Date: {article.publicationDate}</p>
