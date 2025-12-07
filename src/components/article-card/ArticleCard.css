@@ -11,19 +11,6 @@
     overflow: hidden;
 }
 
-@media (max-width: 1440px) {
-    .article-card {
-        width: 500px;
-    }
-}
-
-@media (max-width: 1200px) {
-    .article-card {
-        width: 400px;
-    }
-}
-
-
 .article-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -104,4 +91,34 @@
 .authors strong {
     color: #3f51b5;
     font-weight: 600;
+}
+
+@media (max-width: 1800px) {
+    .article-card {
+        width: 600px;
+    }
+
+    .article-card-header a.title h3 {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 1440px) {
+    .article-card {
+        width: 500px;
+    }
+
+    .article-card-header a.title h3 {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 1200px) {
+    .article-card {
+        width: 400px;
+    }
+
+    .article-card-header a.title h3 {
+        font-size: 1rem;
+    }
 }

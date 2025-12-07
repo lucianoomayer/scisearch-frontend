@@ -56,7 +56,7 @@ export default function SearchField({ onSearch }) {
             <label htmlFor="to-year">To</label>
             <input
               id="to-year"
-              type="text"
+              type="number"
               value={anoFinal}
               onChange={(e) => setAnoFinal(e.target.value)}
             />

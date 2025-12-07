@@ -5,8 +5,8 @@
 }
 
 .search-bar input{ 
-  min-width: 400px;
-  max-width: 500px;   
+  width: 500px;
+  min-width: 280px;  
   height: 35px;
   padding: 10px;
   border: 1px solid #ccc;
@@ -39,7 +39,7 @@
 
 .dropdown-container {
   position: relative;
-  transform: translateX(-14.4rem) translateY(1rem);
+  transform: translateX(-10.7rem) translateY(1rem);
 }
 
 .dropdown-content {
@@ -63,8 +63,8 @@
 
 .dropdown-content input{
   margin-top: 3px;
-  min-width: 150px;
-  max-width: 200px;
+  min-width: 90px;
+  max-width: 140px;
 }
 
 .dropdown-content .apply-button{
