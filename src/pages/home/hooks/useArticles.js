@@ -1,5 +1,5 @@
 import { useState, useCallback } from "react";
-import { fetchArticles as apiFetchArticles } from "../../../api";
+import { fetchArticles as apiFetchArticles } from "../../../services/api";
 
 export function useArticles() {
   const [articles, setArticles] = useState([]);

@@ -1,4 +1,5 @@
-import { BASE_USER_URL, BASE_ARTICLE_URL } from "./config.jsx";
+import { BASE_USER_URL, BASE_ARTICLE_URL } from "../config.jsx";
+import { authFetch } from "./authFetch.js";
 
 export const loginUser = async (email, password) => {
   const response = await fetch(`${BASE_USER_URL}/login`, {
@@ -6,10 +7,10 @@ export const loginUser = async (email, password) => {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email, password }),
   });
-  if (!response.ok) throw new Error("Incorrect username and/or password");
-  const data = await response.json();
-  localStorage.setItem("access_token", data.token);
-  return data;
+
+  if (!response.ok) throw new Error("Invalid credentials");
+
+  return await response.json();
 };
 
 export const registerUser = async (name, email, password) => {
@@ -52,15 +53,8 @@ export const fetchArticles = async (query, filter = {}) => {
 }
 
 export const saveArticle = async (article) => {
-  const token = localStorage.getItem("access_token");
-  if (!token) throw new Error("Token not found");
-
-  const response = await fetch(`${BASE_ARTICLE_URL}/save`, {
+  const response = await authFetch(`${BASE_ARTICLE_URL}/save`, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`,
-    },
     body: JSON.stringify({
         articleId: article.articleId,
         title: article.title,
@@ -74,14 +68,8 @@ export const saveArticle = async (article) => {
 }
 
 export const fetchFavoriteArticles = async () => {
-  const token = localStorage.getItem("access_token");
-  if (!token) throw new Error("Token not found");
-
-  const response = await fetch(`${BASE_ARTICLE_URL}/favorites`, {
-    headers: {
-      method: "GET",
-      Authorization: `Bearer ${token}`,
-    },
+  const response = await authFetch(`${BASE_ARTICLE_URL}/favorites`, {
+    method: "GET"
   });
 
   if (!response.ok) {
@@ -93,15 +81,9 @@ export const fetchFavoriteArticles = async () => {
 
 
 export const deleteArticle = async (articleId) => {
-  const token = localStorage.getItem("access_token");
-  if (!token) throw new Error("Token not found");
-
-  const response = await fetch(`${BASE_ARTICLE_URL}/favorites/delete?articleId=${encodeURIComponent(articleId)}`,
+  const response = await authFetch(`${BASE_ARTICLE_URL}/favorites/delete?articleId=${encodeURIComponent(articleId)}`,
     {
       method: "DELETE",
-      headers: {
-        "Authorization": `Bearer ${token}`,
-      },
     }
   );
 

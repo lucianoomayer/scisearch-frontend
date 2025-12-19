@@ -1,9 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useAuth } from '../../contexts/AuthContext';
 import  SearchField  from '../search-field/SearchField';
 import "./Header.css";
 
-export default function Header({ isAuthenticated, handleSearch, onLoginClick, onRegisterClick, userName, onLogout , onFavoritesClick}) {
-   return (
+export default function Header({ handleSearch, onLoginClick, onRegisterClick, onFavoritesClick}) {
+  const { isAuthenticated, user, logout } = useAuth();
+
+  return (
     <header className="header-container">
       <div className="header-left"></div>
       <div className="header-middle">
@@ -14,9 +17,9 @@ export default function Header({ isAuthenticated, handleSearch, onLoginClick, on
         <div className="auth-group">
           {isAuthenticated ? (
             <>
-              <p>Welcome, {userName.split(" ")[0]}! Find scientific articles easily.</p>
+              <p>Welcome, {user?.name?.split(" ")[0]}! Find scientific articles easily.</p>
               <button onClick={onFavoritesClick} className="button1">My Favorites</button>
-              <button onClick={onLogout} className="button2">Log out</button>
+              <button onClick={logout} className="button2">Log out</button>
             </>
           ) : (
             <>

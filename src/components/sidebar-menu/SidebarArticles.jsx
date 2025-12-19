@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { fetchFavoriteArticles } from "./../../api";
+import { fetchFavoriteArticles } from "../../services/api";
 import "./SidebarArticles.css";
 
 export default function SideBarArticles({ onClose, onDelete, onRefresh }) {

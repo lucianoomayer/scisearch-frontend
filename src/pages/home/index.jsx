@@ -6,8 +6,10 @@ import Pagination from "../../components/pagination/Pagination";
 import SidebarArticles from '../../components/sidebar-menu/SidebarArticles';
 import { useArticles } from "./hooks/useArticles";
 import { onDelete } from './hooks/onDelete';
+import { useAuth } from '../../contexts/AuthContext';
 
-export default function Home({onLoginClick, onRegisterClick, isAuthenticated, userName, onLogout}) {
+export default function Home({onLoginClick, onRegisterClick}) {
+    const { isAuthenticated, user, logout } = useAuth();
     const [searchTerm, setSearchTerm] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
     const mainContentRef = useRef(null);
@@ -40,12 +42,9 @@ export default function Home({onLoginClick, onRegisterClick, isAuthenticated, us
     return (
         <div className="home-container">
             <Header
-                isAuthenticated={isAuthenticated}
-                userName={userName}
                 handleSearch={handleSearch}
                 onLoginClick={onLoginClick}
                 onRegisterClick={onRegisterClick}
-                onLogout={onLogout}
                 onFavoritesClick={() => setShowSidebar(true)}
             />           
             <div className="main-content" ref={mainContentRef}>                             
@@ -68,11 +67,10 @@ export default function Home({onLoginClick, onRegisterClick, isAuthenticated, us
                 )}
                 {showSidebar && (
                 <SidebarArticles
-                    key={refreshKey}
-                    userId={userName.id}
                     onClose={() => setShowSidebar(false)}
-                    isAuthenticated={isAuthenticated}
-                    onDelete={onDelete}                 
+                    onDelete={onDelete} 
+                    key={refreshKey}                   
+                    isAuthenticated={isAuthenticated}                                   
                 />
                 )}
                 {!isLoading && !error && searchTerm && articles.length === 0 && (

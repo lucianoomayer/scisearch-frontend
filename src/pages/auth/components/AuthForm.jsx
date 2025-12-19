@@ -24,7 +24,6 @@ export default function AuthForm({ title, fields, onSubmit, message, onClose, bu
               <button className="submit-button" type="submit">{buttonLabel}</button>
             </form>
             {message && <p className="message">{message}</p>}
-            
           </div>
         </div>
     </div>

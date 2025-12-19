@@ -1,8 +1,11 @@
 import { useState } from "react";
-import { loginUser } from "../../api";
+import { loginUser } from "../../services/api";
+import { useAuth } from "../../contexts/AuthContext";
 import AuthForm from './components/AuthForm'
 
-export default function Login({onClose, onLoginSuccess}) {
+export default function Login({onClose}) {
+  const { login } = useAuth();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
@@ -26,8 +29,9 @@ export default function Login({onClose, onLoginSuccess}) {
     e.preventDefault();
     try{
         const data = await loginUser(email, password);
+        login(data.token, { name: data.name });
         alert(`Login successful! Welcome ${data.name}`);
-        onLoginSuccess(data);        
+        onClose();       
     }catch(err){
         setMessage(err.message || "Login failed");
     }    

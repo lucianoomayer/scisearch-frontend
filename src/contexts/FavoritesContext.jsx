@@ -1,5 +1,5 @@
 import { createContext, useState, useContext, useEffect } from "react";
-import { fetchFavoriteArticles } from "../api";
+import { fetchFavoriteArticles } from "../services/api";
 
 const FavoritesContext = createContext();
 
