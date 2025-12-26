@@ -17,7 +17,7 @@ export default function Header({ handleSearch, onLoginClick, onRegisterClick, on
         <div className="auth-group">
           {isAuthenticated ? (
             <>
-              <p>Welcome, {user?.name?.split(" ")[0]}! Find scientific articles easily.</p>
+              <p>Welcome, {user?.name?.split(" ")[0]}!</p>
               <button onClick={onFavoritesClick} className="button1">My Favorites</button>
               <button onClick={logout} className="button2">Log out</button>
             </>

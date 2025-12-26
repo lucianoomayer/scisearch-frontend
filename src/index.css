@@ -10,3 +10,19 @@ body {
   background: linear-gradient(360deg, #4e4b53 0%, rgba(255, 255, 255, 0.8) 100%);
   background-attachment: fixed;
 }
+
+:root {
+  --header-height: 70px;
+}
+
+@media (max-width: 1800px) {
+  :root {
+    --header-height: 60px;
+  }
+}
+
+@media (max-width: 1366px) {
+  :root {
+    --header-height: 50px;
+  }
+}

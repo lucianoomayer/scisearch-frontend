@@ -7,7 +7,7 @@
 
 .main-content {
   align-items: center;  
-  margin-top: 70px;  
+  margin-top: var(--header-height);
   padding-top: 15px;
   flex: auto;  
   background: linear-gradient(135deg, #0d1b2a, #1b2a47);

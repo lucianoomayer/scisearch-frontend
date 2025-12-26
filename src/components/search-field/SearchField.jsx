@@ -41,7 +41,7 @@ export default function SearchField({ onSearch }) {
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Enter keywords, authors, or DOI..."
       />
-      <button type="submit" className="search-button">Buscar</button>
+      <button type="submit" className="search-button">Search</button>
       <button type="button" className="filter-button" onClick={() => setOpen(!open)}>Filter</button>
       <div className="dropdown-container">
         {open && (
@@ -61,7 +61,7 @@ export default function SearchField({ onSearch }) {
               onChange={(e) => setAnoFinal(e.target.value)}
             />
             <button type="button" className="apply-button" onClick={handleFilter}>
-              Aplicar
+              Apply
             </button>
           </div>
         )}
