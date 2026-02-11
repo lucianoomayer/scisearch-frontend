@@ -1,13 +1,13 @@
 import { deleteArticle } from "../../../services/api";
 
-export async function onDelete(article, setArticles) {
+export async function onDelete(favoriteId, setArticles) {
   try {
-    const response = await deleteArticle(article.articleId);
+    const response = await deleteArticle(favoriteId);
 
     if (response.ok) {
       alert("Article removed successfully.");
       setArticles(prev =>
-        prev.filter(a => a.articleId !== article.articleId)
+        prev.filter(fav => fav.id !== favoriteId)
       );
       return;
     }

@@ -12,6 +12,7 @@ export default function SideBarArticles({ onClose, onDelete, onRefresh }) {
     const token = localStorage.getItem("access_token");
     if (!token) {
       setError("User not authenticated.");
+      console.log("FAVORITES RESPONSE:", data);
       setLoading(false);
       return;
     }
@@ -36,17 +37,16 @@ export default function SideBarArticles({ onClose, onDelete, onRefresh }) {
     }
   }, [onRefresh]);
 
-  const filteredArticles = articles.filter(article =>
-    article.title.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredArticles = articles.filter(favorite =>
+    favorite.article.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
-
+  
   return (
     <aside className="sidebar-container">
       <div className="sidebar-header">
         <h2>My Articles</h2>
         <button title="Close" className="close-button" onClick={onClose}>x</button>
       </div>
-
       <input
         type="text"
         className="input"
@@ -54,7 +54,6 @@ export default function SideBarArticles({ onClose, onDelete, onRefresh }) {
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
-
       <div className="sidebar-content">
         {loading ? (
           <p className="empty-message">Loading...</p>
@@ -63,17 +62,28 @@ export default function SideBarArticles({ onClose, onDelete, onRefresh }) {
         ) : filteredArticles.length === 0 ? (
           <p className="empty-message">No articles found.</p>
         ) : (
-          filteredArticles.map((article) => (
-            <div className="sidebar-card" key={article.articleId}>
-              <div className="header">
-                <h3><a href={article.url}>{article.title}</a></h3>
-                <button title="Remove" className="delete-button" onClick={() => onDelete(article, setArticles)}>x</button>
+          filteredArticles.map((fav) => {
+            const article = fav.article;
+            return (
+              <div className="sidebar-card" key={fav.id}>
+                <div className="header">
+                  <h3>
+                    <a href={article.url}>{article.title}</a>
+                  </h3>
+                  <button
+                    title="Remove"
+                    className="delete-button"
+                    onClick={() => onDelete(fav.id, setArticles)}
+                  >
+                    x
+                  </button>
+                </div>
+                <p>Publication Year: {article.publicationYear}</p>
+                <p>Source: {article.source || "N/A"}</p>
+                <p>Saved in: {fav.favoriteAt}</p>
               </div>
-              <p>Publication Date: {article.publicationDate}</p>
-              <p>Source: {article.source || "N/A"}</p>
-              <p>Saved in: {article.favoriteAt}</p>
-            </div>  
-          ))
+            );
+          })
         )}
       </div>
     </aside>

@@ -1,4 +1,4 @@
-import { BASE_USER_URL, BASE_ARTICLE_URL } from "../config.jsx";
+import { BASE_USER_URL, BASE_ARTICLE_URL, BASE_ARTICLE_FAVORITE_URL } from "../config.jsx";
 import { authFetch } from "./authFetch.js";
 
 export const loginUser = async (email, password) => {
@@ -30,7 +30,7 @@ export const fetchArticles = async (query, filter = {}) => {
   if (filter?.anoInicial !== undefined) { params.append("startYear", filter.anoInicial); } 
   if (filter?.anoFinal !== undefined) { params.append("endYear", filter.anoFinal); }
   
-  const response = await fetch(`${BASE_ARTICLE_URL}/search?${params.toString()}`,{
+  const response = await fetch(`${BASE_ARTICLE_URL}?${params.toString()}`,{
       method: "GET",
       headers: {
         "Accept": "application/json"
@@ -53,14 +53,14 @@ export const fetchArticles = async (query, filter = {}) => {
 }
 
 export const saveArticle = async (article) => {
-  const response = await authFetch(`${BASE_ARTICLE_URL}/save`, {
+  const response = await authFetch(`${BASE_ARTICLE_FAVORITE_URL}`, {
     method: "POST",
     body: JSON.stringify({
-        articleId: article.articleId,
+        externalId: article.externalId,
         title: article.title,
-        url: article.articleUrl,
-        source: article.source,
-        publicationDate: article.publicationDate
+        url: article.url,
+        publicationDate: article.publicationDate,
+        source: article.source   
       })
   });
 
@@ -68,7 +68,7 @@ export const saveArticle = async (article) => {
 }
 
 export const fetchFavoriteArticles = async () => {
-  const response = await authFetch(`${BASE_ARTICLE_URL}/favorites`, {
+  const response = await authFetch(`${BASE_ARTICLE_FAVORITE_URL}`, {
     method: "GET"
   });
 
@@ -80,8 +80,8 @@ export const fetchFavoriteArticles = async () => {
 };
 
 
-export const deleteArticle = async (articleId) => {
-  const response = await authFetch(`${BASE_ARTICLE_URL}/favorites/delete?articleId=${encodeURIComponent(articleId)}`,
+export const deleteArticle = async (favoriteId) => {
+  const response = await authFetch(`${BASE_ARTICLE_FAVORITE_URL}/${favoriteId}`,
     {
       method: "DELETE",
     }

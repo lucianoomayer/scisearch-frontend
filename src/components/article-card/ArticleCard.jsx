@@ -15,7 +15,7 @@ export default function ArticleCard({ article, isAuthenticated, onSaved }) {
     <div className="article-card">
       <div className="article-card-header">
         <a
-          href={article.articleUrl}
+          href={article.url}
           target="_blank"
           rel="noopener noreferrer"
           className="title"
@@ -30,7 +30,7 @@ export default function ArticleCard({ article, isAuthenticated, onSaved }) {
           ? article.authors.join(", ")
           : "N/A"}
       </div>
-      <p className="pub-date">Publication Date: {article.publicationDate || "N/A"}</p>
+      <p className="pub-date">Publication Year: {article.publicationYear || "N/A"}</p>
       <p className="source">Source: {article.source || "N/A"}</p>
     </div>
   );
