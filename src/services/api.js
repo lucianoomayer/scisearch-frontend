@@ -59,7 +59,7 @@ export const saveArticle = async (article) => {
         externalId: article.externalId,
         title: article.title,
         url: article.url,
-        publicationDate: article.publicationDate,
+        publicationYear: article.publicationYear,
         source: article.source   
       })
   });
